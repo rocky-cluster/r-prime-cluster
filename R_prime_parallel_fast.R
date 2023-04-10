@@ -13,4 +13,4 @@ found_primes <- foreach(check_i= search_space, .combine=c() ) %dopar% {
   return(list(check_i))
 }
 
-write.table(sort(c(known_primes, found_primes)), file="R_prime_serial.txt")
+write.table(sort(c(known_primes, found_primes)), file="R_prime_parallel_fast.txt")
