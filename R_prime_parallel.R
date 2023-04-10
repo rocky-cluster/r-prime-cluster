@@ -8,9 +8,10 @@ known_primes <-
 
 search_space <- 34:999
 
-found_primes <- foreach(check_i= search_space, .combine=c() ) %dopar% {
-  if(any((check_i %% known_primes )==0 ) return(list())
-  return(list(check_i))
+found_primes <- foreach(check_i= search_space, .combine=c ) %dopar% {
+  if(any((check_i %% known_primes )==0 ) ) return(numeric())
+  return(c(check_i))
 }
 
-write.table(sort(c(known_primes, found_primes)), file="R_prime_parallel.txt")
+write.table(sort(c(known_primes, found_primes)), file="R_prime_parallel.txt", 
+            row.names = F,col.names = F)
